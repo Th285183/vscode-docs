@@ -1,17 +1,52 @@
-{
-	// Place your vscode-docs workspace snippets here. Each snippet is defined under a snippet name and has a scope, prefix, body and
-	// description. Add comma separated ids of the languages where the snippet is applicable in the scope field. If scope
-	// is left empty or omitted, the snippet gets applied to all languages. The prefix is what is
-	// used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
-	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders.
-	// Placeholders with the same ids are connected.
-	// Example:
-	"code-setting": {
-		"scope": "markdown",
-		"prefix": "setting",
-		"body": [
-			"<code codesetting=\"$1${2::${3:value}}\">$1</code>"
-		],
-		"description": "Interactive VS Code Setting"
-	}
-}
+{from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+import time
+
+# Initialize the browser driver
+driver_path = 'path/to/chromedriver'  # Change this to the path where you downloaded ChromeDriver
+driver = webdriver.Chrome(executable_path=driver_path)
+
+# Open the target website
+driver.get('https://www.example.com')
+
+# Wait for the page to load
+wait = WebDriverWait(driver, 10)
+
+# Example login process
+def login(username, password):
+    wait.until(EC.presence_of_element_located((By.ID, 'login-username')))
+    driver.find_element(By.ID, 'login-username').send_keys(username)
+    driver.find_element(By.ID, 'login-password').send_keys(password)
+    driver.find_element(By.ID, 'login-button').click()
+
+# Example add to cart process
+def add_to_cart(product_url):
+    driver.get(product_url)
+    wait.until(EC.presence_of_element_located((By.ID, 'add-to-cart-button')))
+    driver.find_element(By.ID, 'add-to-cart-button').click()
+
+# Example checkout process
+def checkout():
+    driver.get('https://https://www.nike.com/cart
+    wait.until(EC.presence_of_element_located((By.ID, 'checkout-button')))
+    driver.find_element(By.ID, 'checkout-button').click()
+    # Fill in checkout details
+    wait.until(EC.presence_of_element_located((By.ID, 'shipping-address')))
+    driver.find_element(By.ID, 'shipping-address').send_keys('123 Main St')
+    driver.find_element(By.ID, 'shipping-city').send_keys('Anytown')
+    driver.find_element(By.ID, 'shipping-zip').send_keys('12345')
+    driver.find_element(By.ID, 'payment-method').send_keys('4111111111111111')
+    driver.find_element(By.ID, 'place-order-button').click()
+
+# Example usage
+try:
+    login('taraji hendrix', 'Th285183
+
+    add_to_cart('https:/https://www.nike.com/cart
+    checkout()
+finally:
+    # Close the browser
+    driver.quit()
